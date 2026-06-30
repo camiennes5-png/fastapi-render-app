@@ -23,3 +23,4 @@ async def ask(req: Request):
 
     # Returning "reply" ensures the Noa app can successfully read and display the text
     return {"reply": response.choices[0].message.content}
+  
