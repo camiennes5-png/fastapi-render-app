@@ -15,10 +15,11 @@ class Request(BaseModel):
 
 @app.post("/")
 async def ask(req: Request):
-    # I have updated the model parameter below from "gpt-5.5" to "gpt-4o"
+    # Sends the text to OpenAI's gpt-4o model
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[{"role": "user", "content": req.text}]
     )
 
-    return {"answer": response.choices[0].message.content}
+    # Returning "reply" ensures the Noa app can successfully read and display the text
+    return {"reply": response.choices[0].message.content}
